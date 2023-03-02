@@ -18,7 +18,7 @@ test("should render the SpeakerCard component", ()=>{
 	expect(card).toBeDefined()
 });
 
-test("should make sure toggle button shows or hide details", ()=>{
+test("should make sure the toggle button shows or hides details", ()=>{
 	render(<SpeakerCard speaker={speaker}/>);
 	const toggleButton = screen.getByTestId("toggle-test");
 	expect(screen.queryByTestId("test-details")).toBeNull();
