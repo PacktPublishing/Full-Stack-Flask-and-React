@@ -28,7 +28,6 @@ def index():
 
 @app.route("/api/v1/venues")
 def venues():
-
     return jsonify({"id": 1, "name": "Auditorium A"}), 404
 
 
