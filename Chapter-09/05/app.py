@@ -26,10 +26,6 @@ def index():
     return "Welcome to Bizza REST API Server"
 
 
-@app.route("/api/v1/venues")
-def venues():
-    return jsonify({"id": 1, "name": "Auditorium A"}), 404
-
 
 @app.route("/api/v1/venues", methods=['POST'])
 def add_venues():
@@ -194,3 +190,10 @@ class Venue(db.Model):
     __tablename__ = 'venues'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
+	
+  def format(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+
+        }
