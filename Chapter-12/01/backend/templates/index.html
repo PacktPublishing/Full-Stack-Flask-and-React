@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security with Password Hashing </title>
+</head>
+<body>
+    <h1>Password Hashing</h1>
+
+    {% if password_hash %}
+    <p>Hashed Password: {{ password_hash }}</p>
+    {% endif %}
+
+    <form action="/" method="POST">
+		{{ csrf_token }}
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Hash Password</button>
+    </form>
+</body>
+</html>
