@@ -1,0 +1,51 @@
+{    "schedules":
+
+    [
+
+        {
+
+            "id":1,
+
+            "time":"10.00 AM",
+
+            "speaker": "Juliet Abert",
+
+            "subjectTitle":"Intro to React Hooks",
+
+            "venue":"Auditorium C"
+
+        },
+
+        {
+
+            "id":2,
+
+            "time":"12.00 AM",
+
+            "speaker": "Andrew Wilson",
+
+            "subjectTitle":"React Performance Optimization ",
+
+            "venue":"Auditorium A"
+
+        },
+
+        {
+
+            "id":3,
+
+            "time":"2.00 PM",
+
+            "speaker": "Lewis Hooper",
+
+            "subjectTitle":"Intro to JavaScript",
+
+            "venue":"Auditorium B"
+
+        }
+
+
+
+    ]
+
+}
