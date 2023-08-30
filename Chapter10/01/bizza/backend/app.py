@@ -56,34 +56,67 @@ class Speaker(db.Model):
     def __repr__(self):
 
         return f"Speaker('{self.name}', '{self.bio}', '{self.photo}', '{self.contact_info}')"
+      
 
-
-class EventRegistration (db.Model):
-
-    __tablename__ = ' attendees '
-
+class EventRegistration(db.Model):
+    __tablename__ = 'attendees'
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(120), nullable=False)
-    last_name = db.Column(db.String(120), nullable=False)
-    email = db.Column(db.String(120), nullable=False, unique=True)
-    phone = db.Column(db.String(20))
-    job_title = db.Column(db.String(120))
-    company_name = db.Column(db.String(120))
-    company_size = db.Column(db.String(120))
-    subject = db.Column(db.String(120))
+    first_name = db.Column(db.String(100), unique=True, nullable=False)
+    last_name = db.Column(db.String(100), unique=True, nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    phone = db.Column(db.String(100), unique=True, nullable=False)
+    job_title = db.Column(db.String(100), unique=True, nullable=False)
+    company_name = db.Column(db.String(100), unique=True, nullable=False)
+    company_size = db.Column(db.String(50), unique=True, nullable=False)
+    subject = db.Column(db.String(250), nullable=False)
+
+    def format(self):
+        return {
+            'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+            'phone': self.phone,
+            'job_title':self.job_title,
+            'company_name': self.company_name,
+            'company_size': self.company_size,
+            'subject': self.subject
+        }
+@app.route("/api/v1/events-registration", methods=['POST'])
+def add_attendees():
+    if request.method == 'POST':
+        first_name = request.get_json().get('first_name')
+        last_name = request.get_json().get('last_name')
+        email = request.get_json().get('email')
+        phone = request.get_json().get('phone')
+        job_title = request.get_json().get('job_title')
+        company_name = request.get_json().get('company_name')
+        company_size = request.get_json().get('company_size')
+        subject = request.get_json().get('subject')
+
+        if first_name and last_name and email and phone and subject:
+            all_attendees = EventRegistration.query.filter_by(
+                email=email).first()
+            if all_attendees:
+                return jsonify(message="Email address already exists!"), 409
+            else:
+                new_attendee = EventRegistration(
+                    first_name = first_name,
+                    last_name = last_name,
+                    email = email,
+                    phone = phone,
+                    job_title = job_title,
+                    company_name = company_name,
+                    company_size = company_size,
+                    subject = subject
+                )
+                db.session.add(new_attendee)
+                db.session.commit()
+                return jsonify({
+                    'success': True,
+                    'new_attendee': new_attendee.format()
+                }), 201
+        else:
+            return jsonify({'error': 'Invalid input'}), 400
 
 
-def format(self):
-
-    return {
-        'id': self.id,
-        'first_name': self.first_name,
-        'last_name': self.last_name,
-        'email': self.email,
-        'phone': self.phone,
-        'job_title': self.job_title,
-        'company_name': self.job_title,
-        'company_size': self.company_size,
-        'subject': self.subject
-
-    }
