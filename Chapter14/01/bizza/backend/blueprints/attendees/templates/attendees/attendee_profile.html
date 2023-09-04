@@ -1,0 +1,12 @@
+{% extends 'attendees/base.html' %}
+
+{% block content %}
+  <h1>{{ attendee.full_name }}</h1>
+  <p>Email: {{ attendee.email }}</p>
+  <p>Phone: {{ attendee.phone }}</p>
+  <p>Job Title: {{ attendee.job_title }}</p>
+  <p>Company: {{ attendee.company }}</p>
+  <p>City: {{ attendee.city }}</p>
+  <p>Country: {{ attendee.country }}</p>
+  <a href="{{ url_for('attendees.attendee_profile_edit', attendee_id=attendee.id) }}">Edit Profile</a>
+{% endblock %}

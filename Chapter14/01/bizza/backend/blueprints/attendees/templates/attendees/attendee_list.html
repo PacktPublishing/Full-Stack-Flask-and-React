@@ -1,0 +1,29 @@
+{% extends 'attendees/base.html' %}
+
+{% block content %}
+  <h1>Attendee List</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for attendee in attendees %}
+        <tr>
+          <td>{{ attendee.name }}</td>
+          <td>{{ attendee.email }}</td>
+          <td>
+            <a href="{{ url_for('attendees.attendee_profile', attendee_id=attendee.id) }}" class="btn btn-primary">View Profile</a>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="3">No attendees found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

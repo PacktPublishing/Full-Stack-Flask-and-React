@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('attendees.attendee_list') }}">Attendees</a></li>
+        <li><a href="{{ url_for('speakers.speaker_list') }}">Speakers</a></li>
+        <li><a href="{{ url_for('presentations.presentation_list') }}">Presentations</a></li>
+        <li><a href="{{ url_for('sessions.session_list') }}">Sessions</a></li>
+        <li><a href="{{ url_for('sponsors.sponsor_list') }}">Sponsors</a></li>
+        <li><a href="{{ url_for('venues.venue_list') }}">Venues</a></li>
+        {% if current_user.is_authenticated %}
+          <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    <footer>
+      &copy; 2023 Bizza Conference
+    </footer>
+  </body>
+</html>
