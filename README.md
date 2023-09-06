@@ -54,7 +54,7 @@ With the following software and hardware list you can run all code files present
 ### Related products
 * Flask Framework Cookbook - Third Edition [[Packt]](https://www.packtpub.com/product/flask-framework-cookbook-third-edition/9781804611104) [[Amazon]](https://www.amazon.com/Flask-Framework-Cookbook-techniques-applications/dp/1804611107)
 
-* Full Stack FastAPI, React, and MongoDB [[Packt]](https://www.packtpub.com/product/full-stack-fastapi-react-and-mongodb/9781803231822) [[Amazon]](https://www.amazon.in/Modern-Web-Development-FARM-Stack/dp/1803231823)
+* Full Stack FastAPI, React, and MongoDB [[Packt]](https://www.packtpub.com/product/full-stack-fastapi-react-and-mongodb/9781803231822) [[Amazon]](https://www.amazon.com/Modern-Web-Development-FARM-Stack/dp/1803231823)
 
 ## Get to Know the Author
 **Olatunde Adedeji** is a seasoned web developer with over 15 years of experience in developing dynamic and detail-oriented enterprise web applications. Along with his extensive experience in developing, maintaining and supporting mobile, web and enterprise applications in Python, Go and JavaScript, Olatunde has consistently delivered excellent services, as team lead, team member or in consultancy capacity.
